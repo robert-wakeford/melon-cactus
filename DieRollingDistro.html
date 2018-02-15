@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Random Die Rolling</title>
+</head>
+<body>
+	
+	<div class="dieRollArea">
+		<form action="" method="post">
+	  		<label for="POST-name">Number of faces:</label>
+	  		<input id="dieSides" type="number" name="name">
+	  		<br>
+	  		<input type="button" value="Roll!" onclick="dieRoll()">
+		</form>
+				
+	
+		<h1 class="output"></h1>
+		<h3>History </h3>
+		<h5>Please note that refreshing the page will remove the history. </h5>
+		<div class="history">
+			
+		</div>
+	</div>
+
+	<script src="DieTest.js">
+		function dieRoll(){
+			//user input for number of die sides
+			var dieSides = Number(document.getElementById("dieSides").value);
+			// calling history and output sections
+			var result = document.querySelector(".output");
+			var history = document.querySelector(".history");
+			//if statement for fun. Technically not possible for a flat sided die to have 2 or 3 faces though.
+			if (dieSides == 1) {
+				result.textContent = "... 1"
+			} else {
+				//takes the number and generates a random value between 1 and that number
+				var rolled = (Math.floor(Math.random() * dieSides)) + 1;
+				//outputs that number to the output heading
+				result.textContent = "You have rolled: " + rolled;
+				//If there's an output in the output heading it's moved to the history section below
+				history.innerHTML = "<p>The random result of " + dieSides + " choices was " + rolled + "</p>" + history.innerHTML;
+				//Uses innerHTML so not great.
+			}
+		}
+
+	</script>
+</body>
+</html>
