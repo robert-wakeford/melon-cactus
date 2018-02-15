@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Coin Tosser</title>
+</head>
+<body>
+
+		<div class="coinArea">
+			<form action="" method="post">
+	  			<input type="button" value="Flip!" onclick="coinToss()" id="cardPicker">
+			</form>
+						
+			<h1 class="output"></h1>
+			<h3>History </h3>
+			<h5>Please note that refreshing the page will remove the history. </h5>
+			<div class="history">
+			
+			</div>
+		</div>		
+
+	<script type="text/javascript">
+		function coinToss(){
+			// two sides
+			var coins = ["Heads","Tails"];
+			// calling history and output sections
+			var result = document.querySelector(".output");
+			var history = document.querySelector(".history");
+			// calls the function random() with argument i to get value
+			var b = coins[random(coins.length)];
+			//outputs result
+			result.textContent = b + "!";
+			//adds history
+			history.innerHTML = "<p>" + b + "!</p>" + history.innerHTML;
+			//Uses innerHTML so not great.
+		}
+		function random(i) {
+			let a = (Math.floor(Math.random() * i));
+			return a
+		}
+	</script>
+</body>
+</html>
