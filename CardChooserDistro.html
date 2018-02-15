@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Magic Rob</title>
+</head>
+<body>
+
+		<div class="cardArea">
+			<form action="" method="post">
+	  			<input type="button" value="Pick a card!" onclick="cardPick()" class="btn-lg" id="cardPicker">
+			</form>
+						
+			<h1 class="output"></h1>
+			<h3>History </h3>
+			<h5>Please note that refreshing the page will remove the history. </h5>
+			<div class="history">
+			
+			</div>
+		</div>		
+
+	<script>
+	function cardPick(){
+	// object for the suits
+	var suits = ["Diamonds","Hearts","Clubs","Spades"];
+	// object for the face values
+	var value = [1,2,3,4,5,6,7,8,9,10,"Jack", "Queen", "King", "Ace"];
+	// calling output and history classes
+	var result = document.querySelector(".output");
+	var history = document.querySelector(".history");
+	//calculates which suit
+	var b = suits[random(suits.length)];
+	//calculates which value
+	var c = value[random(value.length)];
+	//outputs the answer
+	result.textContent = "You have picked the " + c + " of " + b + ".";
+	//shows history
+	history.innerHTML = "<p>The chosen card was the " + c + " of " + b + ".</p>" + history.innerHTML;
+	//Uses innerHTML so not great.
+}
+function random(i) {
+	let a = (Math.floor(Math.random() * i));
+	return a
+}</script>
+</body>
+</html>
